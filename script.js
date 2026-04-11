@@ -10,8 +10,11 @@
     let particles = [];
     let connections = [];
     let animFrameId;
-    const PARTICLE_COUNT = 80;
-    const MAX_DISTANCE = 150;
+    // Reduce particles on mobile for smooth performance
+    const isMobile = window.innerWidth < 768;
+    const isLowPower = window.innerWidth < 480;
+    const PARTICLE_COUNT = isLowPower ? 25 : (isMobile ? 40 : 80);
+    const MAX_DISTANCE = isMobile ? 100 : 150;
 
     function resizeCanvas() {
       canvas.width = canvas.parentElement.offsetWidth;
@@ -201,7 +204,7 @@
   });
 
   // ====================================
-  // Mobile Nav Toggle
+  // Mobile Nav Toggle (Touch-friendly)
   // ====================================
   document.addEventListener('click', function(e) {
     if (e.target.matches('.mobile-nav-toggle') || e.target.closest('.mobile-nav-toggle')) {
@@ -209,6 +212,18 @@
       const toggle = document.querySelector('.mobile-nav-toggle');
       toggle.classList.toggle('bx-menu');
       toggle.classList.toggle('bx-x');
+    }
+    // Close mobile nav when tapping outside sidebar on mobile
+    if (document.body.classList.contains('mobile-nav-active') &&
+        !e.target.closest('#header') &&
+        !e.target.matches('.mobile-nav-toggle') &&
+        !e.target.closest('.mobile-nav-toggle')) {
+      document.body.classList.remove('mobile-nav-active');
+      const toggle = document.querySelector('.mobile-nav-toggle');
+      if (toggle) {
+        toggle.classList.add('bx-menu');
+        toggle.classList.remove('bx-x');
+      }
     }
   });
 

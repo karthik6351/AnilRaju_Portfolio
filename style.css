@@ -1096,54 +1096,558 @@ section {
 }
 
 /* ============================================
-   Responsive Fine-Tuning
+   Cross-Platform Compatibility & Fixes
+   ============================================ */
+
+/* iOS Safari: Fix 100vh issue */
+@supports (-webkit-touch-callout: none) {
+  #hero {
+    height: -webkit-fill-available;
+  }
+}
+
+/* Touch-friendly minimum tap targets (44x44 for iOS, 48x48 for Android) */
+@media (pointer: coarse) {
+  .nav-menu .nav-link {
+    padding: 14px 15px;
+    min-height: 48px;
+  }
+  .social-links a {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .pub-tab {
+    padding: 14px 25px;
+    min-height: 48px;
+  }
+  .btn-submit {
+    padding: 16px 30px;
+    min-height: 48px;
+  }
+  .back-to-top {
+    width: 50px;
+    height: 50px;
+  }
+  .info-icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* Smooth scrolling for all platforms */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Fix image rendering across all platforms */
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Prevent text selection highlight color from looking odd on mobile */
+::selection {
+  background: var(--accent-teal);
+  color: var(--bg-primary);
+}
+::-moz-selection {
+  background: var(--accent-teal);
+  color: var(--bg-primary);
+}
+
+/* ============================================
+   Responsive: Large Desktops (> 1400px)
+   ============================================ */
+@media (min-width: 1400px) {
+  .section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  #hero h1 {
+    font-size: 76px;
+  }
+}
+
+/* ============================================
+   Responsive: Laptops / Small Desktops (1200-1399px)
+   ============================================ */
+@media (max-width: 1399px) and (min-width: 1200px) {
+  .section-container {
+    padding: 45px 35px;
+  }
+}
+
+/* ============================================
+   Responsive: Tablets Landscape / Small Laptops (992-1199px)
+   ============================================ */
+@media (max-width: 1199px) {
+  #header {
+    left: -300px;
+  }
+  #main, #hero, #footer {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  .section-container {
+    padding: 40px 25px;
+    margin: 0 15px;
+  }
+}
+
+/* ============================================
+   Responsive: Tablets Portrait (768-991px)
    ============================================ */
 @media (max-width: 992px) {
+  section {
+    padding: 60px 0;
+  }
   .section-container {
     padding: 35px 20px;
-    margin: 0 10px;
+    margin: 0 12px;
   }
   .section-title h2 {
     font-size: 28px;
+  }
+  .section-title p {
+    font-size: 14px;
   }
   .certifications-grid {
     grid-template-columns: 1fr;
   }
   .skills-category-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  #hero h1 {
+    font-size: 50px;
+  }
+  #hero p {
+    font-size: 20px;
+  }
+  .hero-stats {
+    gap: 20px;
+  }
+  .stat-item {
+    padding: 18px 22px;
+    min-width: 120px;
+  }
+  .about-img-wrapper {
+    max-width: 280px;
+    margin-bottom: 25px;
+  }
+  .about .content ul strong {
+    min-width: 90px;
+  }
+  .resume .resume-item {
+    padding: 18px 20px;
+  }
+  .pub-item {
+    padding: 16px;
+  }
+  .research-card-img {
+    height: 180px;
+  }
+  .info-box {
+    padding: 25px;
+    margin-bottom: 20px;
+  }
+  .contact-form {
+    padding: 25px;
   }
 }
 
-@media (max-width: 576px) {
+/* ============================================
+   Responsive: Large Phones / Phablets (576-767px)
+   ============================================ */
+@media (max-width: 767px) {
   section {
     padding: 50px 0;
   }
   .section-container {
-    padding: 25px 15px;
+    padding: 30px 18px;
+    margin: 0 10px;
     border-radius: var(--radius-md);
-    margin: 0 5px;
+  }
+  .section-title h2 {
+    font-size: 26px;
+  }
+  #hero h1 {
+    font-size: 42px;
+    line-height: 1.15;
+  }
+  #hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .hero-badge {
+    font-size: 11px;
+    padding: 5px 16px;
+  }
+  .hero-stats {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .stat-item {
+    padding: 15px 18px;
+    min-width: 110px;
+    flex: 1 1 calc(50% - 12px);
+    max-width: calc(50% - 6px);
+  }
+  .stat-number {
+    font-size: 30px;
+  }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  /* About section: stack on mobile */
+  .about .row .col-lg-4 {
+    margin-bottom: 25px;
+  }
+  .about-img-wrapper {
+    max-width: 250px;
+    margin: 0 auto 20px;
+  }
+  .about .content h3 {
+    font-size: 20px;
+    text-align: center;
+  }
+  .about-subtitle {
+    text-align: center;
+  }
+  .research-tags {
+    justify-content: center;
+  }
+  .about .content ul li {
+    font-size: 13px;
+  }
+
+  /* Skills */
+  .skills-category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .skill-category-card {
+    padding: 20px 15px;
+  }
+  .skill-category-card h5 {
+    font-size: 14px;
+  }
+  .skill-category-card p {
+    font-size: 12px;
+  }
+
+  /* Resume items */
+  .resume .resume-title {
+    font-size: 20px;
+  }
+  .resume .resume-item h4 {
+    font-size: 15px;
+  }
+  .resume .resume-item ul li {
+    font-size: 12px;
+  }
+
+  /* Publications */
+  .pub-item {
+    flex-direction: row;
+    gap: 15px;
+    padding: 15px;
+  }
+  .pub-number {
+    min-width: 40px;
+    height: 40px;
+    font-size: 12px;
+  }
+  .pub-content h5 {
+    font-size: 14px;
+  }
+  .pub-authors {
+    font-size: 12px;
+  }
+  .pub-venue {
+    font-size: 11px;
+  }
+  .publications-tabs {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .pub-tab {
+    flex: 1;
+    text-align: center;
+  }
+
+  /* Research cards */
+  .research-card-body {
+    padding: 16px;
+  }
+  .research-card-body h5 {
+    font-size: 15px;
+  }
+  .research-card-body p {
+    font-size: 12px;
+  }
+
+  /* Certifications */
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .cert-card {
+    padding: 15px;
+  }
+
+  /* Contact */
+  .info-box {
+    padding: 20px;
+  }
+  .contact-form {
+    padding: 20px;
+  }
+  .contact-form .form-label {
+    font-size: 12px;
+  }
+
+  /* Footer */
+  #footer {
+    padding: 20px 15px;
+  }
+  #footer .copyright {
+    font-size: 12px;
+  }
+  #footer .credits {
+    font-size: 11px;
+  }
+}
+
+/* ============================================
+   Responsive: Small Phones (480-575px)
+   ============================================ */
+@media (max-width: 575px) {
+  section {
+    padding: 40px 0;
+  }
+  .section-container {
+    padding: 25px 15px;
+    margin: 0 8px;
   }
   .section-title h2 {
     font-size: 24px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
   }
+  .section-title p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  #hero h1 {
+    font-size: 36px;
+  }
+  #hero p {
+    font-size: 16px;
+  }
+  .hero-stats {
+    gap: 8px;
+  }
+  .stat-item {
+    padding: 12px 14px;
+    min-width: 95px;
+  }
+  .stat-number {
+    font-size: 26px;
+  }
+
+  .about .content ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .about .content ul strong {
+    min-width: unset;
+    margin-bottom: 2px;
+  }
+
+  .skills-category-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .skill-cat-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
   .pub-item {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .resume .resume-item {
+    padding: 15px;
+  }
+  .resume .resume-item h4 {
+    font-size: 14px;
+  }
+  .resume .resume-item h5 {
+    font-size: 12px;
+  }
+
+  .research-card-img {
+    height: 160px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================
+   Responsive: Tiny Phones (< 380px) — iPhone SE, older Androids
+   ============================================ */
+@media (max-width: 379px) {
+  .section-container {
+    padding: 20px 12px;
+    margin: 0 5px;
+  }
+  #hero h1 {
+    font-size: 30px;
+  }
+  #hero p {
+    font-size: 14px;
+  }
+  .hero-badge {
+    font-size: 10px;
+    padding: 4px 12px;
+  }
+  .hero-stats {
+    gap: 6px;
+  }
+  .stat-item {
+    padding: 10px 10px;
+    min-width: 70px;
+    flex: 1 1 calc(50% - 6px);
+  }
+  .stat-number {
+    font-size: 22px;
+  }
+  .stat-suffix {
+    font-size: 16px;
+  }
+  .stat-label {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+  .section-title h2 {
+    font-size: 22px;
+  }
+  .about-img-wrapper {
+    max-width: 200px;
+  }
+  .skills-category-grid {
+    grid-template-columns: 1fr;
+  }
+  .skill-category-card {
+    padding: 15px 12px;
+  }
+  .pub-tab {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+  .cert-card {
+    padding: 12px;
+    gap: 10px;
+  }
+  .cert-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .cert-content h5 {
+    font-size: 13px;
+  }
+  .cert-content p {
+    font-size: 11px;
+  }
+  .research-card-img {
+    height: 140px;
+  }
+  .info-item h4 {
+    font-size: 14px;
+  }
+  .info-item p,
+  .info-item a {
+    font-size: 12px;
+  }
+}
+
+/* ============================================
+   Landscape Mode on Phones
+   ============================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  #hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 60px 20px;
+  }
+  #hero h1 {
+    font-size: 32px;
   }
   .hero-stats {
     gap: 10px;
   }
   .stat-item {
-    min-width: 80px;
-    padding: 12px 14px;
-  }
-  .skills-category-grid {
-    grid-template-columns: 1fr;
-  }
-  .publications-tabs {
-    flex-direction: column;
-  }
-  .pub-tab {
-    text-align: center;
+    padding: 10px 15px;
   }
 }
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  #header,
+  .mobile-nav-toggle,
+  .back-to-top,
+  #hero-particles,
+  .hero-overlay {
+    display: none !important;
+  }
+  #main, #hero, #footer {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .section-container {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+
+/* ============================================
+   Reduce Motion (Accessibility)
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .progress-bar-fill::after {
+    animation: none;
+  }
+}
+
