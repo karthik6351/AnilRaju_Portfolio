@@ -204,6 +204,45 @@
   });
 
   // ====================================
+  // Skills Category Tabs
+  // ====================================
+  const skillTabs = document.querySelectorAll('.skill-tab');
+  const skillChips = document.querySelectorAll('.skill-chip');
+
+  if (skillTabs.length > 0) {
+    skillTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Remove active class
+        skillTabs.forEach(t => t.classList.remove('active'));
+        
+        // Add active to current
+        this.classList.add('active');
+
+        const filter = this.getAttribute('data-filter');
+        
+        skillChips.forEach(chip => {
+          // Reset animation
+          chip.style.animation = 'none';
+          chip.offsetHeight; /* trigger reflow */
+          
+          if (filter === 'all' || chip.classList.contains(filter)) {
+            chip.style.display = 'inline-flex';
+            chip.style.animation = 'fadeInUp 0.5s ease-out';
+          } else {
+            chip.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // Initialize the first tab automatically (Programming)
+    // small timeout so elements are fully loaded
+    setTimeout(() => {
+        if(skillTabs[0]) skillTabs[0].click();
+    }, 100);
+  }
+
+  // ====================================
   // Mobile Nav Toggle (Touch-friendly)
   // ====================================
   document.addEventListener('click', function(e) {

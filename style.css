@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   width: 300px;
   z-index: 9997;
-  padding: 0 15px;
+  padding: 0;
   background: linear-gradient(180deg, #0a192f 0%, #0d1f3c 50%, #112240 100%);
   overflow-y: auto;
   border-right: 1px solid var(--glass-border);
@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #header .profile {
   text-align: center;
-  padding-top: 25px;
+  padding: 25px 15px 0 15px;
   flex-shrink: 0;
 }
 
@@ -178,9 +178,9 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 .nav-menu {
   padding: 20px 0 0 0;
-  width: calc(100% + 30px);
-  margin-left: -15px;
-  margin-right: -15px;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -592,34 +592,36 @@ section {
   background: var(--bg-tertiary);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  padding: 25px 20px;
+  padding: 15px 10px;
   text-align: center;
   transition: var(--transition-smooth);
+  cursor: pointer;
 }
-.skill-category-card:hover {
-  transform: translateY(-8px);
+.skill-category-card:hover, .skill-category-card.active {
+  transform: translateY(-5px);
   border-color: var(--accent-teal);
   box-shadow: var(--shadow-hover);
+  background: rgba(100, 255, 218, 0.05);
 }
 .skill-cat-icon {
-  width: 55px;
-  height: 55px;
-  margin: 0 auto 12px;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 8px;
   background: rgba(100, 255, 218, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 18px;
   color: var(--accent-teal);
   transition: var(--transition-fast);
 }
-.skill-category-card:hover .skill-cat-icon {
+.skill-category-card:hover .skill-cat-icon, .skill-category-card.active .skill-cat-icon {
   background: var(--accent-teal);
   color: var(--bg-primary);
 }
 .skill-category-card h5 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-bright);
   margin-bottom: 6px;
