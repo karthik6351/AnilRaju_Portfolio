@@ -178,7 +178,9 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 .nav-menu {
   padding: 20px 0 0 0;
-  width: 100%;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+  margin-right: -15px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -199,11 +201,11 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   color: var(--text-secondary);
-  padding: 12px 15px;
+  padding: 12px 20px;
   margin-bottom: 0;
   font-size: 14px;
   font-weight: 500;
-  border-radius: var(--radius-sm);
+  border-radius: 0;
   transition: var(--transition-fast);
   position: relative;
   overflow: hidden;
@@ -629,39 +631,36 @@ section {
   margin: 0;
 }
 
-.progress-block .skill {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-bright);
+/* Skills Tags Grid */
+.skills-tags-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
-.progress-block .val {
-  color: var(--accent-teal);
-  font-style: normal;
-}
-.progress-bar-bg {
-  width: 100%;
-  height: 8px;
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   background: var(--bg-tertiary);
-  border-radius: 4px;
-  overflow: hidden;
+  color: var(--text-bright);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--glass-border);
+  transition: var(--transition-fast);
+  cursor: default;
 }
-.progress-bar-fill {
-  height: 100%;
-  width: 0;
-  background: var(--gradient-teal);
-  border-radius: 4px;
-  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
+.skill-chip i {
+  color: var(--accent-teal);
+  font-size: 15px;
 }
-.progress-bar-fill::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  animation: shimmer 2s infinite;
+.skill-chip:hover {
+  background: rgba(100, 255, 218, 0.1);
+  border-color: var(--accent-teal);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(100, 255, 218, 0.15);
+  color: var(--accent-teal);
 }
 
 @keyframes shimmer {
