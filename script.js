@@ -283,8 +283,12 @@
         }
         
         const target = document.querySelector(this.hash);
+        const container = target.querySelector('.section-container');
+        const scrollElement = container ? container : target;
+        
+        // Use a smaller offset so the card sits nicely near the top
         const headerOffset = 20;
-        const elementPosition = target.getBoundingClientRect().top;
+        const elementPosition = scrollElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
         window.scrollTo({
